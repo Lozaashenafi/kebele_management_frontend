@@ -1,0 +1,52 @@
+.custom-hover-bg:hover {
+  background-color: #397a9d;
+}
+* {
+  font-family: serif;
+}
+.backGround {
+  background-color: #9cbdce !important;
+}
+.backGroundMenu {
+  background-color: #0c4a6e !important;
+}
+.container1 {
+  margin: auto;
+}
+.button {
+  background-color: #397a9d;
+}
+.containerGrid {
+  display: grid;
+  grid-template-columns: 1fr 4fr; /* First div takes 1/10 and second div takes 9/10 */
+  /* Adjust as needed */
+}
+.footer {
+  position: absolute;
+  bottom: 10px;
+}
+/* ////////////////home////////////////// */
+
+header[role="banner"] #logo-main {
+  display: block;
+  margin: 20px auto;
+}
+#navbar-primary.navbar-default {
+  background: transparent;
+  border: none;
+}
+#navbar-primary.navbar-default .navbar-nav {
+  width: 100%;
+  text-align: center;
+}
+#navbar-primary.navbar-default .navbar-nav > li {
+  display: inline-block;
+  float: none;
+}
+#navbar-primary.navbar-default .navbar-nav > li > a {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.active {
+  color: #397a9d;
+}

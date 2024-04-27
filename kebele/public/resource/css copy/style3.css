@@ -1,0 +1,27 @@
+body {
+  background-color: #f8f9fa;
+}
+.statistics-card {
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.card-body {
+  text-align: center;
+}
+.card-title {
+  font-size: 24px;
+  color: #333;
+}
+.card-text {
+  font-size: 18px;
+  color: #666;
+}
+.male-icon {
+  font-size: 50px;
+  color: #007bff;
+}
+.female-icon {
+  font-size: 50px;
+  color: #ff006e;
+}
