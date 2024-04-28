@@ -11,9 +11,8 @@ function AddManager() {
     role: "MANAGER",
     phone: "",
     email: "",
-    kebele: "",
     gender: "",
-    Password: "",
+    password: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,13 +31,14 @@ function AddManager() {
       !formData.email ||
       !formData.phone ||
       !formData.gender ||
-      !formData.Password
+      !formData.password
     ) {
       message.error("Please fill in all required fields.");
       return;
     }
     // Handle form submission here
     const res = await profileService.register(formData);
+    console.log(res);
     setToastData(res);
     if (res.success) {
       setFormData({
@@ -47,9 +47,8 @@ function AddManager() {
         lastName: "",
         phone: "",
         email: "",
-        kebele: "",
         gender: "",
-        Password: "",
+        password: "",
       });
     }
   };
@@ -135,18 +134,6 @@ function AddManager() {
             </div>
           </div>
           <div className="row mb-3">
-            <label className="col-md-4 col-lg-3 col-form-label">kebele</label>
-            <div className="col-md-8 col-lg-9">
-              <input
-                name="kebele"
-                type="text"
-                className="form-control"
-                id="kebele"
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div className="row mb-3">
             <label className="col-md-4 col-lg-3 col-form-label">gender</label>
             <div className="col-md-8 col-lg-9">
               <input
@@ -162,7 +149,7 @@ function AddManager() {
             <label className="col-md-4 col-lg-3 col-form-label">Password</label>
             <div className="col-md-8 col-lg-9">
               <input
-                name="Password"
+                name="password"
                 type="password"
                 className="form-control"
                 id="password"

@@ -2,9 +2,10 @@ import axios from "../util/axios";
 
 const kebeleServer = {
   register: async (kebeleData) => {
+    console.log(kebeleData);
     try {
       const response = await axios.post("kebele/register", kebeleData);
-      // console.log(response);
+
       return response.data;
     } catch (error) {
       return error.response.data;
@@ -22,8 +23,9 @@ const kebeleServer = {
   },
   delete: async (id) => {
     try {
+      console.log(id);
       const response = await axios.delete(`kebele/delete/${id}`);
-      // console.log(response);
+      console.log(response);
       return response.data;
     } catch (error) {
       // console.log(error);

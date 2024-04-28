@@ -37,6 +37,7 @@ function Home() {
     dispatch({ type: actionTypes.SET_ACTIVE_PAGE, payload: page });
   };
 
+  // console.log(state1);
   // Render components based on active page
   const renderActivePage = () => {
     switch (state.activePage) {

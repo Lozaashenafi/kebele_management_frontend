@@ -31,12 +31,12 @@ const ContactUs = () => {
 
 function GetInTouch() {
   return (
-    <div className="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+    <div
+      className="col-lg-6 col-md-6 wow fadeInUp font-serif"
+      data-wow-delay="0.1s"
+    >
       <h5>Get In Touch</h5>
-      <p className="mb-4">
-        Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam
-        amet diam et eos
-      </p>
+      <p className="mb-4">Empowering Voices, Strengthening Communities</p>
       <div className="d-flex align-items-center mb-4">
         <div className="ms-3">
           <h5 className="text-teal-600 ">Mobile</h5>
@@ -46,7 +46,7 @@ function GetInTouch() {
       <div className="d-flex align-items-center">
         <div className="ms-3">
           <h5 className="text-teal-600 ">Email</h5>
-          <p className="mb-0">info@example.com</p>
+          <p className="mb-0">mentinakebele@gmail.com</p>
         </div>
       </div>
       <div className="socialMedia">

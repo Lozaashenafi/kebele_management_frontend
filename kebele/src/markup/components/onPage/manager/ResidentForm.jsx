@@ -1,34 +1,38 @@
 import React, { useState } from "react";
+import { useToast } from "../../../../context/ToastContext";
+import residentService from "../../../../services/residentService";
 
 const ResidentForm = () => {
   // State to manage form data
+  const { toastData, hideToast, setToastData } = useToast();
+
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
     lastName: "",
     gender: "",
-    age: "",
-    homeNo: "",
-    idNumber: "",
-    consent: false,
+    age: 0,
+    homeNo: 0,
+    idNumber: 0,
   });
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here, you can send the formData to your backend or perform any other actions
-    console.log(formData);
+    // console.log(formData);
     // Reset form fields after submission
-    setFormData({
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      gender: "",
-      age: "",
-      homeNo: "",
-      idNumber: "",
-      consent: false,
-    });
+    const res = residentService.register(formData);
+    setToastData(res);
+    // setFormData({
+    //   firstName: "",
+    //   middleName: "",
+    //   lastName: "",
+    //   gender: "",
+    //   age: "",
+    //   homeNo: "",
+    //   idNumber: "",
+    // });
   };
 
   // Function to handle input changes
@@ -45,7 +49,7 @@ const ResidentForm = () => {
       <h2 className="mt-5 mb-4 text-center text-3xl font-bold text-sky-800 font-serif">
         New Resident Information Form
       </h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="row">
           <div className="col-md-6 mb-3">
             <label htmlFor="firstName" className="form-label">
@@ -55,7 +59,6 @@ const ResidentForm = () => {
               type="text"
               id="firstName"
               name="firstName"
-              value={formData.firstName}
               onChange={handleChange}
               className="form-control"
               required
@@ -69,7 +72,6 @@ const ResidentForm = () => {
               type="text"
               id="middleName"
               name="middleName"
-              value={formData.middleName}
               onChange={handleChange}
               className="form-control"
               required
@@ -85,7 +87,6 @@ const ResidentForm = () => {
               type="text"
               id="lastName"
               name="lastName"
-              value={formData.lastName}
               onChange={handleChange}
               className="form-control"
               required
@@ -99,7 +100,6 @@ const ResidentForm = () => {
                 id="male"
                 name="gender"
                 value="male"
-                checked={formData.gender === "male"}
                 onChange={handleChange}
                 className="form-check-input"
               />
@@ -113,7 +113,6 @@ const ResidentForm = () => {
                 id="female"
                 name="gender"
                 value="female"
-                checked={formData.gender === "female"}
                 onChange={handleChange}
                 className="form-check-input"
               />
@@ -132,7 +131,6 @@ const ResidentForm = () => {
               type="number"
               id="age"
               name="age"
-              value={formData.age}
               onChange={handleChange}
               className="form-control"
               required
@@ -145,7 +143,6 @@ const ResidentForm = () => {
             <textarea
               id="homeNo"
               name="homeNo"
-              value={formData.homeNo}
               onChange={handleChange}
               className="form-control"
               required
@@ -160,7 +157,6 @@ const ResidentForm = () => {
             <textarea
               id="idNumber"
               name="idNumber"
-              value={formData.idNumber}
               onChange={handleChange}
               className="form-control"
               required
@@ -172,7 +168,6 @@ const ResidentForm = () => {
             type="checkbox"
             id="consent"
             name="consent"
-            checked={formData.consent}
             onChange={handleChange}
             className="form-check-input"
             required
@@ -181,7 +176,11 @@ const ResidentForm = () => {
             I didnt
           </label>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          className="btn btn-primary"
+        >
           Submit
         </button>
       </form>

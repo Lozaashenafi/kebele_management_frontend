@@ -18,33 +18,15 @@ function SideBar({ handelNav, navList }) {
           </a>
         </h1>
         <ul className="mb-5 no-underline">
-          <li className={displaySubmenu ? "active" : ""}>
-            <a
-              href="#homeSubmenu"
-              aria-expanded={displaySubmenu}
-              className="no-underline text-white p-2"
-              onClick={(e) => toggleSubmenu(e)} // Pass the event object (e) to the function
-            >
+          <li onClick={() => handelNav(`${navList[0]}`)}>
+            <a href="#" className="no-underline text-white p-2">
               {navList[0]}
-              <ArrowDropDownIcon />
             </a>
-            {displaySubmenu && (
-              <ul className="" id="homeSubmenu">
-                {navList[1].map((a, i) => {
-                  return (
-                    <li
-                      className="p-2"
-                      onClick={() => handelNav(`${a}`)}
-                      key={i}
-                    >
-                      <a href="#" className="no-underline text-white">
-                        {a}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+          </li>
+          <li onClick={() => handelNav(`${navList[1]}`)}>
+            <a href="#" className="no-underline text-white p-2">
+              {navList[1]}
+            </a>
           </li>
           <li onClick={() => handelNav(`${navList[2]}`)}>
             <a href="#" className="no-underline text-white p-2">
@@ -59,6 +41,16 @@ function SideBar({ handelNav, navList }) {
           <li onClick={() => handelNav(`${navList[4]}`)}>
             <a href="#" className="no-underline text-white p-2">
               {navList[4]}
+            </a>
+          </li>
+          <li onClick={() => handelNav(`${navList[5]}`)}>
+            <a href="#" className="no-underline text-white p-2">
+              {navList[5]}
+            </a>
+          </li>
+          <li onClick={() => handelNav(`${navList[6]}`)}>
+            <a href="#" className="no-underline text-white p-2">
+              {navList[6]}
             </a>
           </li>
         </ul>

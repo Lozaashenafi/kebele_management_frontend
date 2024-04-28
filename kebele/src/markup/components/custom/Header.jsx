@@ -6,6 +6,7 @@ import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { json, useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 function Header({ openMenu, setOpenMenu }) {
   const [isOpenProfile, setIsOpenProfile] = useState(false); // Corrected state variable name
@@ -31,6 +32,7 @@ function Header({ openMenu, setOpenMenu }) {
             Logo
           </div>
         </div>
+        <SearchBar />
         <div className="flex gap-8  items-centers">
           <span className="pt-2 pr-16">
             <LocationOnIcon /> Location

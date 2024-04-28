@@ -7,7 +7,7 @@ function News() {
   return (
     <>
       <section>
-        <p className="text-xl font-serif ml-5 text-cyan-600 font-bold mt-8">
+        <p className="text-xl font-serif  font-serif from-neutral-900 text-cyan-800 ml-5 text-cyan-600 font-bold mt-8">
           In This Week
         </p>
         <div className="flex w-full mt-3 p-4 bg-sky-100">

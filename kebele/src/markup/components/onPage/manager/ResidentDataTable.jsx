@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import residentService from "../../../../services/residentService";
 
 const ResidentDataTable = () => {
+  const [residents, setResidents] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await residentService.getAll();
+      setResidents(res.data);
+    } catch (error) {
+      console.error("Error fetching resident data:", error);
+    }
+  };
+
   return (
     <div className="mt-5">
       <h2 className="text-center text-3xl font-bold text-sky-800 font-serif mb-3">
@@ -17,14 +33,7 @@ const ResidentDataTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>loza Ashenafi Wedneh</td>
-            <td>Female</td>
-            <td>23</td>
-            <td>1188</td>
-            <td>1793/14</td>
-          </tr>
-          {/* {residentData.map((resident, index) => (
+          {residents.map((resident, index) => (
             <tr key={index}>
               <td>{`${resident.firstName} ${resident.middleName} ${resident.lastName}`}</td>
               <td>{resident.gender}</td>
@@ -32,8 +41,7 @@ const ResidentDataTable = () => {
               <td>{resident.homeNo}</td>
               <td>{resident.idNumber}</td>
             </tr>
-        
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

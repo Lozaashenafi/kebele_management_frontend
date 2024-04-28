@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import AddKebele from "../../../components/onPage/admin/AddKebele";
 import KebeleList from "../../../components/onPage/admin/KebeleList";
 import AddManager from "../../../components/onPage/admin/AddManager";
+import ManagerList from "../../../components/onPage/admin/ManagerList";
 
 // Define action types
 const ActionTypes = {
@@ -91,7 +92,7 @@ function HomeA() {
             </li>
             <li
               className="cursor-pointer hover:bg-cyan-700"
-              onClick={() => dispatch({ type: ActionTypes.SHOW_manager_LIST })}
+              onClick={() => dispatch({ type: ActionTypes.SHOW_MANAGER_LIST })}
             >
               List manager
             </li>

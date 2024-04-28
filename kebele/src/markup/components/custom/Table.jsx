@@ -1,6 +1,7 @@
 import RequestDetail from "./RequestDetail";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
+import formService from "../../../services/formService";
 const Data = [
   {
     No: "1",
@@ -42,12 +43,18 @@ const Data = [
 export default function Tables({ active }) {
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 5;
+  const [idrequests, setIdrequests] = useState([]);
+  const [birthrequests, setBirthrequests] = useState([]);
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = Data.slice(firstIndex, lastIndex);
+  const records = idrequests.slice(firstIndex, lastIndex);
   const npage = Math.ceil(Data.length / recordsPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
   const [modalShow, setModalShow] = React.useState(false);
+  const [data, setData] = useState({});
+  const [fullData, setFullData] = useState({});
+  const [idrq, setIdrq] = useState({});
+  const [bdrq, setBdrq] = useState({});
   function nextPage(e) {
     if (currentPage !== npage) {
       setCurrentPage(currentPage + 1);
@@ -61,6 +68,52 @@ export default function Tables({ active }) {
   function changeCpage(id) {
     setCurrentPage(id);
   }
+  const handlePopup = (data) => {
+    setModalShow(true);
+    // console.log(data);
+
+    idrq.map((resident, id) => {
+      if (resident.id === data.id) {
+        // console.log(resident);
+        setFullData(resident);
+      }
+    });
+    // console.log(fullData);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await formService.getidrequest();
+      const res2 = await formService.getbirthrequests();
+      const response1 = res.data;
+      const response2 = res2.data;
+      setBdrq(response2);
+      setIdrq(response1);
+      setIdrequests(
+        response1.map((request, i) => ({
+          id: request.id, // Fix here: Use request.id instead of response.id
+          fullName: request.fullName, // Fix here: Use request.fullName instead of response.fullName
+          phone: request.phone, // Fix here: Use request.phone instead of response.phone
+          email: request.email, // Fix here: Use request.email instead of response.email
+        }))
+      );
+      setBirthrequests(
+        response2.map((request, i) => ({
+          id: request.id, // Fix here: Use request.id instead of response.id
+          firstName: request.firstName, // Fix here: Use request.fullName instead of response.fullName
+          idNumber: request.idNumber, // Fix here: Use request.phone instead of response.phone
+          email: request.email, // Fix here: Use request.email instead of response.email
+        }))
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
     <>
       <div>
@@ -72,19 +125,19 @@ export default function Tables({ active }) {
             <Table striped bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th>ID</th>
                   <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Phone</th>
                   <th>Email</th>
                 </tr>
               </thead>
               <tbody>
-                {records.map((d, i) => (
-                  <tr onClick={() => setModalShow(true)} key={i}>
-                    <td>{d.No}</td>
-                    <td>{d.firstName}</td>
-                    <td>{d.lastName}</td>
-                    <td>{d.email}</td>
+                {records.map((record, i) => (
+                  <tr onClick={() => handlePopup(record)} key={i}>
+                    <td>{record.id}</td>
+                    <td>{record.fullName}</td>
+                    <td>{record.phone}</td>
+                    <td>{record.email}</td>
                   </tr>
                 ))}
               </tbody>
@@ -222,18 +275,18 @@ export default function Tables({ active }) {
             <Table striped bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th>ID</th>
                   <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
+                  <th>ID Number</th>
+                  <th>Email</th>
                 </tr>
               </thead>
               <tbody>
-                {Data.map((d, i) => (
-                  <tr onClick={() => setModalShow(true)} key={i}>
-                    <td>{d.No}</td>
+                {birthrequests.map((d, i) => (
+                  <tr onClick={() => handlePopup(d)} key={i}>
+                    <td>{d.id}</td>
                     <td>{d.firstName}</td>
-                    <td>{d.lastName}</td>
+                    <td>{d.idNumber}</td>
                     <td>{d.email}</td>
                   </tr>
                 ))}
@@ -269,7 +322,11 @@ export default function Tables({ active }) {
           </div>
         )}
 
-        <RequestDetail show={modalShow} onHide={() => setModalShow(false)} />
+        <RequestDetail
+          fullData={fullData}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       </div>
     </>
   );

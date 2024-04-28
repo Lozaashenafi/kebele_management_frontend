@@ -7,6 +7,7 @@ import ManIcon from "@mui/icons-material/Man";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 
 function RequestDetail(props) {
+  // console.log(props.fullData);
   return (
     <Modal
       {...props}
@@ -25,38 +26,47 @@ function RequestDetail(props) {
             <Col>
               <div className="mb-1 ">
                 <label className="font-serif">Name: </label>
-                <span> Loza Ashenafi</span>
+                <span>{props.fullData.fullName}</span>
               </div>
               <div className="mb-1 ">
                 <label htmlFor="">Father Name: </label>
-                <span> Ashenafi Wudneh</span>
+                <span>{props.fullData.fatherName}</span>
               </div>
               <div className="mb-1 ">
                 <label htmlFor="">Mother Name: </label>
-                <span>Konjit Daniel</span>
+                <span>{props.fullData.motherName}</span>
               </div>
-              <WomanIcon />
-              <span>Woman</span>
+              {props.fullData.gender === "FEMALE" ? (
+                <>
+                  <WomanIcon />
+                  <span>Woman</span>
+                </>
+              ) : (
+                <>
+                  <ManIcon />
+                  <span>Male</span>
+                </>
+              )}
               <div className="mb-1 ">
                 <label htmlFor="">Email:</label>
                 <a href="mailto:lozaashenafi@gmail.com">
-                  lozaashenafi@gmail.com
+                  {props.fullData.email}
                 </a>
               </div>
               <div className="mb-1 ">
                 <label htmlFor="">BirthDay: </label>
-                <span> 01/02/1995</span>
+                <span>{props.fullData.birthDate}</span>
               </div>
               <div className="mb-1 ">
                 <label htmlFor="">House No: </label>
-                <span> 1314</span>
+                <span>{props.fullData.houseNumber}</span>
               </div>
               <div className="mb-1 ">
                 <label htmlFor="">House live: </label>
-                <span> Owner</span>
+                <span>{props.fullData.houseLive}</span>
               </div>
-              <p>Worker</p>
-              <p>Ethiopian</p>
+              <p>{props.fullData.workStatus}</p>
+              <p>{props.fullData.nationality}</p>
             </Col>
             <Col className="absolute top-2 left-80">
               <div>

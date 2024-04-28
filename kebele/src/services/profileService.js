@@ -6,7 +6,6 @@ import axios from "../util/axios";
 //   middleName,
 //   lastName,
 //   job,
-//   kebele,
 //   phone,
 //   email,
 // };
@@ -19,7 +18,36 @@ const profileService = {
       console.log(response);
       return response.data;
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
+      return error.response.data;
+    }
+  },
+  getAllManager: async () => {
+    try {
+      const response = await axios.get("user/getallmanager");
+      return response.data;
+    } catch (error) {
+      // console.log(error);
+      return error.response.data;
+    }
+  },
+  getAllSecretary: async () => {
+    try {
+      const response = await axios.get("user/getallsecretary");
+      return response.data;
+    } catch (error) {
+      // console.log(error);
+      return error.response.data;
+    }
+  },
+  delete: async (id) => {
+    try {
+      // console.log(id);
+      const response = await axios.delete(`user/delete/${id}`);
+      // console.log(response);
+      return response.data;
+    } catch (error) {
+      // console.log(error);
       return error.response.data;
     }
   },

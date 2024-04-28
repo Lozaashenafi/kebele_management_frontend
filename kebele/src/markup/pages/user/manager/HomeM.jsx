@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import SideBar from "../../../components/custom/SideBar";
 import Header from "../../../components/custom/Header";
 import SearchBar from "../../../components/custom/SearchBar";
-import Tables from "../../../components/custom/Table";
 import SecretaryTable from "../../../components/onPage/manager/SecretaryTable";
 import GenderStat from "../../../components/onPage/manager/GenderStat";
 import AgeStat from "../../../components/onPage/manager/AgeStat";
 import ResidentTable from "../../../components/onPage/manager/ResidentTable";
+import SecretaryManage from "./SecretaryManage";
+import IdRequestTable from "../../../components/onPage/manager/IdRequestTable";
+import BirthRequestTable from "../../../components/onPage/manager/BirthRequestTable";
 
 function HomeM() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -16,7 +18,8 @@ function HomeM() {
   };
   const navList = [
     "ID Request",
-    ["Mendermeri Approved", "Given"],
+    "Birth Certificate",
+    "Given",
     "Secretory",
     "Residents",
     "Statistic",
@@ -27,9 +30,12 @@ function HomeM() {
         {openMenu && <SideBar handelNav={handelNav} navList={navList} />}
         <div>
           <Header openMenu={openMenu} setOpenMenu={setOpenMenu} />
-          <SearchBar />
-          <Tables active={active} />
-          {active === "Secretory" && <SecretaryTable />}
+          {/* <RequestTable active={active} /> */}
+          {active === "ID Request" && <IdRequestTable />}
+          {active === "" && <IdRequestTable />}
+          {active === "Birth Certificate" && <BirthRequestTable />}
+          {active === "Given" && <></>}
+          {active === "Secretory" && <SecretaryManage />}
           {active === "Residents" && (
             <>
               <ResidentTable />

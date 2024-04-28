@@ -1,14 +1,16 @@
 import { useState } from "react";
 import formService from "../../../services/formService.js";
+import { useToast } from "../../../context/ToastContext";
 
 function IdForm() {
   const [page, setPage] = useState(1);
   // console.log(state);
+  const { toastData, hideToast, setToastData } = useToast();
   const [formDataPage1, setFormDataPage1] = useState({
     email: "",
     fullName: "",
-    fatherFullName: "",
-    motherFullName: "",
+    fatherName: "",
+    motherName: "",
     birthDate: "",
   });
 
@@ -53,46 +55,26 @@ function IdForm() {
     console.log(formData);
     let res = await formService.idrequest(formData);
     console.log(res);
+    setToastData(res);
   };
-
   return (
     <div className="max-w-md mx-auto w-4/5 mt-14 mb-4">
       <h1 className="text-3xl text-center font-medium font-serif">
-        ID Registration Form{" "}
+        ID Registration Form
       </h1>
       {page === 1 && (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block mb-1">First Name:</label>
+            <label className="block mb-1">Full Name:</label>
             <input
               type="text"
-              name="firstName"
+              name="fullName"
               onChange={handleChangePage1}
               className="w-full border rounded px-3 py-2"
               required
             />
           </div>
 
-          <div>
-            <label className="block mb-1">Middle Name:</label>
-            <input
-              type="text"
-              name="middleName"
-              onChange={handleChangePage1}
-              className="w-full border rounded px-3 py-2"
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1">Last Name:</label>
-            <input
-              type="text"
-              name="lastName"
-              onChange={handleChangePage1}
-              className="w-full border rounded px-3 py-2"
-              required
-            />
-          </div>
           <div>
             <label className="block mb-1">Email:</label>
             <input
@@ -155,9 +137,8 @@ function IdForm() {
               required
             >
               <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+              <option value="male">MALE</option>
+              <option value="female">FEMALE</option>
             </select>
           </div>
           <div>

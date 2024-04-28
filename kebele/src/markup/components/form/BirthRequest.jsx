@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import formService from "../../../services/formService.js";
+
+import { useToast } from "../../../context/ToastContext";
 
 function BirthRequest() {
+  const { toastData, hideToast, setToastData } = useToast();
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
     lastName: "",
     email: "",
-    motherFullName: "",
-    houseNumber: "",
+    motherName: "",
     idnumber: "",
   });
 
@@ -21,7 +24,10 @@ function BirthRequest() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await formService.BirthRequest(formData);
+    const res = await formService.birthrequest(formData);
+    setToastData(res);
+    console.log(res);
+    // console.log(formData);
   };
 
   return (
@@ -80,16 +86,6 @@ function BirthRequest() {
           />
         </div>
         <div>
-          <label className="block mb-1">House Number:</label>
-          <input
-            type="text"
-            name="houseNumber"
-            onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-            required
-          />
-        </div>
-        <div>
           <label className="block mb-1">Id Number:</label>
           <input
             type="text"
@@ -101,6 +97,7 @@ function BirthRequest() {
         </div>
         <div className="flex justify-end">
           <button
+            onClick={handleSubmit}
             type="button"
             className="bg-blue-500 text-white px-4 py-2 rounded"
           >

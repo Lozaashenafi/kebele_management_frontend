@@ -1,19 +1,13 @@
 import React from "react";
-import logo1 from "../../../../assets/Image/logo1.jpg";
 import { Link } from "react-router-dom";
 
-function Header({ navigate }) {
+function Header({ navigate, active }) {
   return (
     <>
       <header role="banner" className="bg-white">
-        <img
-          className="my-0"
-          id="logo-main"
-          src={logo1}
-          width="200"
-          height="100"
-          alt="Logo Thing main logo"
-        />
+        <div className="text-center text-3xl font-serif from-neutral-900 text-cyan-800 p-7">
+          Mentina Kebele
+        </div>
         <nav
           id="navbar-primary"
           className="navbar navbar-default mb-0"
@@ -22,7 +16,7 @@ function Header({ navigate }) {
           <div className="container-fluid h-7">
             <div className="flex gap-5 mx-auto">
               <div
-                className="cursor-pointer hover:text-cyan-600 font-bold "
+                className={`cursor-pointer hover:text-cyan-600 font-bold `}
                 onClick={() => navigate("news")}
               >
                 News
@@ -46,10 +40,16 @@ function Header({ navigate }) {
                 Contact
               </div>
               <Link to="/login">
-                <div className="cursor-pointer hover:text-cyan-600 font-bold ">
+                <div className="cursor-pointer  font-bold px-2 py-1 bg-cyan-600  text-white rounded-lg ">
                   Log In
                 </div>
               </Link>
+            </div>
+            <div
+              className="cursor-pointer hover:text-cyan-600 font-bold ml-10"
+              onClick={() => navigate("logout")}
+            >
+              Log out
             </div>
           </div>
         </nav>

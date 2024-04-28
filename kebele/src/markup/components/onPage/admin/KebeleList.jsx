@@ -71,7 +71,7 @@ function KebeleList() {
                       Edit
                     </button>
                     <button
-                      onClick={() => handleDelete(kebele)}
+                      onClick={() => handleDelete(kebele.id)}
                       className="btn btn-danger"
                     >
                       Delete
