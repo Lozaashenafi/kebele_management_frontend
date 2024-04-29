@@ -1,0 +1,107 @@
+.certificateWrapper {
+  width: 24rem;
+  height: 20%;
+  display: flex;
+}
+.certificateContainer {
+  height: 1.5rem;
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.wrapper {
+  width: 28rem;
+  height: 16rem;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #2d3748;
+  padding: 3px;
+  position: relative;
+}
+.image {
+  width: 2rem;
+  height: 184%;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem;
+}
+.title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #656565;
+  margin-top: 0.5rem;
+}
+.pwrapper {
+  margin-left: 3.5rem;
+}
+.personal {
+  margin-left: 0.75rem;
+  font-size: 0.875rem;
+  color: #000;
+  font-family: sans-serif;
+}
+.Resident {
+  font-size: 0.875rem;
+  color: #2d3748;
+  font-family: sans-serif;
+}
+
+.imgcon {
+  height: 80%;
+  font-size: 1.875rem;
+  display: flex;
+}
+.imgcon2 {
+  flex: initial;
+  width: 8rem;
+}
+.imgcon3 {
+  width: 7rem;
+  height: 7rem;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid;
+}
+.nationalit {
+  font-size: 1.25rem;
+  color: black;
+  margin-top: 1.5rem;
+  margin-left: 0.75rem;
+}
+.infowrapper {
+  flex: initial;
+  width: 11rem;
+  font-size: 0.875rem;
+  color: black;
+  margin-top: 1.25rem;
+  margin-left: 1rem;
+}
+.expired {
+  font-size: 10px;
+  color: black;
+  position: absolute;
+  top: 210px;
+  left: 298px;
+  // margin-top: 120px;
+}
+.expired p {
+  font-size: 10px;
+  color: black;
+}
+
+.flex {
+  display: flex;
+  gap: 5px;
+}
+.button {
+  width: 120px;
+  height: 40px;
+  background-color: #22b8cf;
+  padding: 0.5rem;
+  color: #fff;
+  border-radius: 0.375rem;
+  margin-left: 1rem;
+}

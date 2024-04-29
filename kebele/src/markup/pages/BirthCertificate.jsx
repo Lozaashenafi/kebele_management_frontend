@@ -1,4 +1,5 @@
 import React from "react";
+import flage from "../../../public/resource/images/icons/ethiopia.png";
 
 function BirthCertificate() {
   return (
@@ -8,10 +9,8 @@ function BirthCertificate() {
           <div className="h-36  relative">
             <div className="w-32 border-2 rounded-sm h-32 absolute top-6 left-6 "></div>
             <div>
-              <div className="h-12 w-20 border rounded-sm absolute left-80 top-7 ">
-                <div className="h-4 bg-lime-600"></div>
-                <div className="h-4 bg-yellow-300"></div>
-                <div className="h-4 bg-red-700"></div>
+              <div className="h-12 w-20 border rounded-sm absolute left-80 top-3 ">
+                <img src={flage} alt="" />
               </div>
               <p className="text-black text-base absolute left-44 top-24 border-b-2 ">
                 በ ኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ ሪፐብሊክ የወሳኝ ኩነት ምዝገባ

@@ -14,7 +14,6 @@ function Forms() {
       <FormMenu setActiveButton={setActiveButton} />
       {activeButton === "id" ? <IdForm /> : <></>}
       {activeButton === "bd" ? <BirthRequest /> : <></>}
-      {activeButton === "dc" ? <DiethCertificateRequest /> : <></>}
     </div>
   );
 }

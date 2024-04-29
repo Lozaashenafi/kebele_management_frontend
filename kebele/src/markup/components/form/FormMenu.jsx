@@ -29,9 +29,6 @@ function FormMenu({ setActiveButton }) {
           <Button onClick={() => handleClick("bd")} variant="outlined">
             Birth Certificate
           </Button>
-          <Button onClick={() => handleClick("dc")} variant="outlined">
-            Death Certificate
-          </Button>
         </div>
       </div>
     </>

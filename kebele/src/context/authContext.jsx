@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, createContext } from "react";
 import getAuth from "../util/authHeader";
 // create auth context
 const AuthContext = createContext();
+import NewsService from "../services/NewsService";
 
 // prepare auth provider
 export const AuthProvider = ({ children }) => {
@@ -10,10 +11,18 @@ export const AuthProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isManager, setisManager] = useState(false);
   const [ismenderMeri, setIsmenderMeri] = useState(false);
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
     fetchData();
+    fetchNews();
   }, []);
+
+  const fetchNews = async () => {
+    const res = await NewsService.getnews();
+    // console.log(res)
+    setNews(res.news);
+  };
 
   console.log(userData);
   const fetchData = async () => {
@@ -50,6 +59,9 @@ export const AuthProvider = ({ children }) => {
     userData,
     setUserData,
     fetchData,
+    news,
+    setNews,
+    fetchNews,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

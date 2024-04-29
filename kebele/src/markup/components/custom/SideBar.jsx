@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 function SideBar({ handelNav, navList }) {
-  const [displaySubmenu, setDisplaySubmenu] = useState(false);
-
-  // Function to toggle display of submenu
-  const toggleSubmenu = (e) => {
-    e.preventDefault(); // Prevent default action of the event
-    setDisplaySubmenu(!displaySubmenu);
-  };
-
   return (
     <>
       <div className="pt-5 relative containerFlex backGroundMenu">

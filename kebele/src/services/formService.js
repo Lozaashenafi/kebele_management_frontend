@@ -52,5 +52,25 @@ const formService = {
       return error.res.data;
     }
   },
+  getgivenidrequest: async () => {
+    try {
+      const response = await axios.get("request/getgivenidrequest");
+      // console.log(response);
+      return response.data;
+    } catch (error) {
+      console.error("Error:", error);
+      return error.response.data;
+    }
+  },
+  getapprovedidrequest: async () => {
+    try {
+      const response = await axios.get("request/getapprovedidrequest");
+      // console.log(response);
+      return response.data;
+    } catch (error) {
+      console.error("Error:", error);
+      return error.response.data;
+    }
+  },
 };
 export default formService;

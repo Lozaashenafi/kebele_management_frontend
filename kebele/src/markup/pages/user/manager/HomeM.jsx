@@ -9,6 +9,8 @@ import ResidentTable from "../../../components/onPage/manager/ResidentTable";
 import SecretaryManage from "./SecretaryManage";
 import IdRequestTable from "../../../components/onPage/manager/IdRequestTable";
 import BirthRequestTable from "../../../components/onPage/manager/BirthRequestTable";
+import GivenIdTable from "../../../components/onPage/manager/GivenIdTable";
+import AddNews from "../../../components/onPage/manager/AddNews";
 
 function HomeM() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -23,6 +25,7 @@ function HomeM() {
     "Secretory",
     "Residents",
     "Statistic",
+    "Post News",
   ];
   return (
     <>
@@ -34,7 +37,7 @@ function HomeM() {
           {active === "ID Request" && <IdRequestTable />}
           {active === "" && <IdRequestTable />}
           {active === "Birth Certificate" && <BirthRequestTable />}
-          {active === "Given" && <></>}
+          {active === "Given" && <GivenIdTable />}
           {active === "Secretory" && <SecretaryManage />}
           {active === "Residents" && (
             <>
@@ -47,6 +50,7 @@ function HomeM() {
               <AgeStat />
             </>
           )}
+          {active === "Post News" && <AddNews />}
         </div>
       </div>
     </>

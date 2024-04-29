@@ -15,7 +15,7 @@ function RequestDetail(props) {
     const res = await formService.approve(data);
     setToastData(res);
   };
-  console.log(props.data);
+  // console.log(props.data);
   return (
     <Modal
       {...props}
